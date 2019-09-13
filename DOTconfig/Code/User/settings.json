@@ -1,0 +1,67 @@
+{
+    "window.menuBarVisibility": "toggle",
+    "editor.wordWrap": "on",
+
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.meta": true
+    },
+    "editor.tabCompletion": "on",
+    "editor.codeLens": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontFamily": "'SFMono', 'Hasklig', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true,
+    "window.zoomLevel": 0,
+    "workbench.activityBar.visible": false,
+    "editor.wordWrapColumn": 100,
+    "html.format.wrapLineLength": 100,
+    "editor.fontSize": 17,
+    "editor.tabSize": 2,
+    "breadcrumbs.enabled": false,
+    "editor.rulers": [
+        100
+    ],
+    "editor.cursorStyle": "block",
+    "vim.camelCaseMotion.enable": true,
+    "vim.textwidth": 100,
+    "vim.normalModeKeyBindings": [
+		{
+			"before": ["j"],
+			"after": ["g","j"]
+		},
+		{
+			"before": ["k"],
+			"after": ["g","k"]
+        },
+        {
+            "before":  ["<C-d>"],
+            "after": ["g","b"]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+		{
+			"before": ["<C-d>"],
+			"after": ["g", "b"],
+        },
+        {
+            "before": ["<C-j>"],
+            "after":  ["<C-e>"],
+        },
+        {
+            "before": ["<C-k>"],
+            "after":  ["<C-y>"],
+        },
+	],
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": "#0066ff",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#0066ff",
+        "statusBar.noFolderBackground": "#0066ff",
+        "statusBar.debuggingBackground": "#0066ff"
+    },
+    "vim.useCtrlKeys": false,
+}
