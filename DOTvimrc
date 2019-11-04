@@ -1,8 +1,7 @@
-"set runtimepath^=~/.vim/bundle/lightline.vim
+set nocompatible
+
 set runtimepath^=~/.vim/bundle/airline.vim
-set runtimepath^=~/.vim/bundle/vim-surround
 set runtimepath^=~/.vim/bundle/vim-multiple-cursors
-set runtimepath^=~/.vim/bundle/vim-indent-guides
 set runtimepath^=~/.vim/bundle/vim-gitgutter
 set runtimepath^=~/.vim/bundle/YouCompleteMe
 "set runtimepath^=~/.vim/bundle/deoplete.nvim
@@ -10,11 +9,13 @@ set runtimepath^=~/.vim/bundle/syntastic
 set runtimepath^=~/.vim/bundle/omnisharp-vim
 set runtimepath^=~/.vim/bundle/tagbar
 set runtimepath^=~/.vim/bundle/ShaderHighLight
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundle/vim-csharp
 
 "General
 set number  "Show line numbers
+set relativenumber
 set linebreak "Break lines at word (requires Wrap lines)
-set showbreak=+++ "Wrap-broken line prefix
 set colorcolumn=100
 set textwidth=100 "Line wrap (number of cols)
 set showmatch "Highlight matching brace
@@ -27,12 +28,22 @@ noremap <C-j> <C-e>
 noremap <C-k> <C-y>
 
 " Auto-closing
-noremap ' ''<left>
-noremap " ""<left>
-noremap ( ()<left>
-noremap [ []<left>
-noremap { {}<left>
- 
+nnoremap ' ''<left>
+nnoremap " ""<left>
+nnoremap ( ()<left>
+nnoremap [ []<left>
+nnoremap { {}<left>
+
+" Tabs
+nnoremap tn :tabnew<Space>
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+
+" Speedup stuff
+nnoremap <C-s> :w<CR>
+nnoremap <C-c> :q<CR>
+nnoremap <C-f> /
+
 " Highlights
 set hlsearch  "Highlight all search results
 set smartcase  "Enable smart-case search
@@ -40,7 +51,7 @@ set ignorecase "Always case-insensitive
 set incsearch   "Searches for strings incrementally
 set cursorline "Highlight current line
 highlight ColorColumn ctermbg=darkgray
- 
+
 " Indent and tabs
 set autoindent  "Auto-indent new lines
 set cindent "Use 'C' style program indenting
@@ -49,12 +60,13 @@ set shiftwidth=2  " Number of auto-indent spaces
 set smartindent "Enable smart-indent
 set smarttab  "Enable smart-tabs
 set softtabstop=2 "Number of spaces per Tab
-let g:indent_guides_enable_on_vim_startup = 1
-  
+"let g:indent_guides_enable_on_vim_startup = 1
+
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 " Advanced
 set ruler  " Show row and column ruler information
-set undolevels=1000 " Number of undo levels
-set backspace=indent,eol,start  " Backspace behaviour
 
 " Multicursors
 let g:multi_cursor_use_default_mapping=0
@@ -89,8 +101,8 @@ let g:OmniSharp_timeout = 5 " Timeout in seconds to wait for a response from the
 set completeopt=longest,menuone,preview
 set previewheight=5
 
-" Deoplete auto-completion
-let g:deoplete#enable_at_startup = 1
+"Jump to definition
+nmap <F12> <C-]>
 
 "set tabstop=2
 set t_Co=256
@@ -98,7 +110,13 @@ syntax enable
 let c_space_errors=1
 
 " THEMES
-"colorscheme molokai
-"let g:airline_theme = 'base16_colors'
-"let g:lightline = {'colorscheme': 'wombat',}
-"set laststatus=2 "<- For LightLine
+colorscheme monokai_pro
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+highlight TrailWhitespace ctermbg=red guibg=red
+match TrailWhitespace /\s\+$/
