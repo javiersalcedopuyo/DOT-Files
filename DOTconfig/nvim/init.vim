@@ -5,20 +5,19 @@ Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
 Plug 'dominikduda/vim_current_word'
-Plug 'Valloric/vim-operator-highlight'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 " Language plugins
-Plug 'neomake/neomake'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'OrangeT/vim-csharp'
 Plug 'CaffeineViking/vim-glsl'
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/ShaderHighLight'
 " Themes
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'morhetz/gruvbox', {'as': 'gruvbox'}
+Plug 'rakr/vim-one', {'as': 'one'}
 call plug#end()
 
 "General
@@ -48,7 +47,6 @@ nnoremap tj :tabprev<CR>
 
 " Speedup stuff
 nnoremap <C-s> :w<CR>
-nnoremap <C-w> :q<CR>
 nnoremap <C-f> /
 nnoremap <Space> /
 
@@ -62,9 +60,6 @@ highlight ColorColumn ctermbg=darkgray
 " Highlight occurrences of the current word
 let g:vim_current_word#highlight_twins = 1
 let g:vim_current_word#highlight_current_word = 0
-" Operator Highlight
-let g:ophigh_color = 226
-let g:ophigh_color_gui = "#F6FF00" "Yellow
 
 " Indent and tabs
 set autoindent  "Auto-indent new lines
@@ -92,10 +87,6 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
-" Neomake
-" Full config: when writing or reading a buffer, and on changes in insert and normal mode
-"              (after 1s; no delay when writing).
-call neomake#configure#automake('nrwi', 500)
 
 " Omnisharp
 let g:OmniSharp_server_stdio = 1
@@ -113,7 +104,13 @@ syntax enable
 let c_space_errors=1
 
 " THEMES
-colorscheme gruvbox
+set termguicolors background=light
+"colorscheme dracula
+colorscheme one
+" Background stays the same as the terminals
+hi Normal  guibg=NONE ctermbg=NONE
+" Parts of buffers without content are transparent
+hi NonText guibg=NONE ctermbg=NONE
 " air-line
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')

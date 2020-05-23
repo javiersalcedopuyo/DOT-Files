@@ -1,6 +1,6 @@
 {
     "window.menuBarVisibility": "toggle",
-    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrap": "on",
 
     "files.exclude": {
         "**/.git": true,
@@ -11,39 +11,18 @@
         "**/*.meta": true
     },
     "editor.tabCompletion": "on",
-    "workbench.iconTheme": "material-icon-theme",
-    "editor.fontFamily": "'SFMono', 'Hasklig', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'JetBrains Mono', 'Fira Code Retina', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     "window.zoomLevel": 0,
-    "workbench.activityBar.visible": false,
     "html.format.wrapLineLength": 100,
-    "editor.fontSize": 17,
     "editor.tabSize": 2,
     "editor.rulers": [
         100
     ],
-    "editor.cursorStyle": "block",
-    "vim.camelCaseMotion.enable": true,
     "vim.normalModeKeyBindings": [
-		{
-			"before": ["j"],
-			"after": ["g","j"]
-		},
-		{
-			"before": ["k"],
-			"after": ["g","k"]
-        },
         {
             "before":  ["<C-d>"],
             "after": ["g","b"]
-        },
-        {
-            "before": ["<C-j>"],
-            "after":  ["<C-e>"],
-        },
-        {
-            "before": ["<C-k>"],
-            "after":  ["<C-y>"],
         },
         {
             "before": ["t","k"],
@@ -52,6 +31,10 @@
         {
             "before": ["t","j"],
             "after" : ["g","T"]
+        },
+        {
+            "before": ["<Space>"],
+            "after" : ["/"]
         }
     ],
     "vim.visualModeKeyBindings": [
@@ -67,19 +50,35 @@
             "before": ["<C-k>"],
             "after":  ["<C-y>"],
         },
-	],
-    "vim.statusBarColorControl": true,
-    "vim.statusBarColors.normal": "#0066ff",
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#0066ff",
-        "statusBar.noFolderBackground": "#0066ff",
-        "statusBar.debuggingBackground": "#0066ff"
-    },
+    ],
+    //"vim.statusBarColorControl": true,
+    //"vim.statusBarColors.normal": "#0066ff",
+    //"workbench.colorCustomizations": {
+    //    "statusBar.background": "#5f0000",
+    //    "statusBar.noFolderBackground": "#5f0000",
+    //    "statusBar.debuggingBackground": "#5f0000"
+    //},
+    "keyboard.dispatch": "keyCode",
     "vim.useCtrlKeys": true,
     "editor.lineNumbers": "relative",
     "editor.wordWrapColumn": 100,
     "vim.textwidth": 100,
     "editor.codeLens": false,
     "vim.cursorStylePerMode.insert": "line",
-    "workbench.colorTheme": "Monokai++",
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.intelliSenseMode": "clang-x64",
+    "terminal.integrated.fontSize": 18,
+    "workbench.editor.tabCloseButton": "left",
+    "vim.vimrc.enable": false,
+    "workbench.colorTheme": "Bluloco Light Italic",
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "editor.cursorBlinking": "smooth",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.minimap.enabled": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.fontSize": 18,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.tabSizing": "shrink",
+    "debug.console.fontSize": 18,
+    "debug.console.fontFamily": "JetBrainsMono, default",
 }
