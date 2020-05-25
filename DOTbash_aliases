@@ -20,3 +20,5 @@ alias grh='git reset --hard'
 alias grs='git reset --soft'
 alias gs='git status'
 alias gl='git log'
+
+alias ll='ls -lisa'
