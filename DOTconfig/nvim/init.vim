@@ -3,14 +3,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'dominikduda/vim_current_word'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 " Language plugins
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'OrangeT/vim-csharp'
 Plug 'CaffeineViking/vim-glsl'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/ShaderHighLight'
@@ -18,6 +17,7 @@ Plug 'vim-scripts/ShaderHighLight'
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'morhetz/gruvbox', {'as': 'gruvbox'}
 Plug 'rakr/vim-one', {'as': 'one'}
+Plug 'NLKNguyen/papercolor-theme', {'as': 'papercolor'}
 call plug#end()
 
 "General
@@ -49,6 +49,7 @@ nnoremap tj :tabprev<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-f> /
 nnoremap <Space> /
+nnoremap <C-p> :Files<CR>
 
 " Highlights
 set hlsearch  "Highlight all search results
@@ -70,9 +71,6 @@ set smartindent "Enable smart-indent
 set smarttab  "Enable smart-tabs
 set softtabstop=2 "Number of spaces per Tab
 
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
 set ruler  " Show row and column ruler information
 
 " Multicursors
@@ -87,15 +85,6 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
-
-" Omnisharp
-let g:OmniSharp_server_stdio = 1
-"let g:OmniSharp_server_use_mono = 1
-let g:OmniSharp_highlight_types = 2
-let g:OmniSharp_timeout = 5 " Timeout in seconds to wait for a response from the server
-set completeopt=longest,menuone,preview
-set previewheight=5
-
 "Jump to definition
 nmap <F12> <C-]>
 
@@ -106,7 +95,7 @@ let c_space_errors=1
 " THEMES
 set termguicolors background=light
 "colorscheme dracula
-colorscheme one
+colorscheme papercolor
 " Background stays the same as the terminals
 hi Normal  guibg=NONE ctermbg=NONE
 " Parts of buffers without content are transparent

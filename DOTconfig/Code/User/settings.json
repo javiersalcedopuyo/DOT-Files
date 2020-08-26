@@ -1,21 +1,11 @@
 {
-    "window.menuBarVisibility": "toggle",
-    "editor.wordWrap": "on",
-
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/*.meta": true
-    },
-    "editor.tabCompletion": "on",
-    "editor.fontFamily": "'JetBrains Mono', 'Fira Code Retina', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "workbench.colorTheme": "papercolor-vscode",
+    "editor.fontSize": 16,
+    "terminal.integrated.fontSize": 16,
+    "editor.fontFamily": "'JetBrains Mono', monospace",
     "editor.fontLigatures": true,
-    "window.zoomLevel": 0,
-    "html.format.wrapLineLength": 100,
-    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "editor.tabCompletion": "on",
     "editor.rulers": [
         100
     ],
@@ -23,6 +13,14 @@
         {
             "before":  ["<C-d>"],
             "after": ["g","b"]
+        },
+        {
+            "before":  ["<C-j>"],
+            "after": ["<C-e>"]
+        },
+        {
+            "before":  ["<C-k>"],
+            "after": ["<C-y>"]
         },
         {
             "before": ["t","k"],
@@ -51,34 +49,18 @@
             "after":  ["<C-y>"],
         },
     ],
-    //"vim.statusBarColorControl": true,
-    //"vim.statusBarColors.normal": "#0066ff",
-    //"workbench.colorCustomizations": {
-    //    "statusBar.background": "#5f0000",
-    //    "statusBar.noFolderBackground": "#5f0000",
-    //    "statusBar.debuggingBackground": "#5f0000"
-    //},
     "keyboard.dispatch": "keyCode",
-    "vim.useCtrlKeys": true,
     "editor.lineNumbers": "relative",
-    "editor.wordWrapColumn": 100,
     "vim.textwidth": 100,
     "editor.codeLens": false,
-    "vim.cursorStylePerMode.insert": "line",
-    "C_Cpp.default.cppStandard": "c++17",
-    "C_Cpp.default.intelliSenseMode": "clang-x64",
-    "terminal.integrated.fontSize": 18,
-    "workbench.editor.tabCloseButton": "left",
-    "vim.vimrc.enable": false,
-    "workbench.colorTheme": "Bluloco Light Italic",
-    "C_Cpp.intelliSenseEngineFallback": "Enabled",
-    "editor.cursorBlinking": "smooth",
-    "editor.acceptSuggestionOnCommitCharacter": false,
-    "editor.minimap.enabled": true,
-    "editor.renderWhitespace": "boundary",
-    "editor.fontSize": 18,
-    "workbench.editor.highlightModifiedTabs": true,
-    "workbench.editor.tabSizing": "shrink",
-    "debug.console.fontSize": 18,
-    "debug.console.fontFamily": "JetBrainsMono, default",
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": "#0066ff",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#0066ff",
+        "statusBar.noFolderBackground": "#0066ff",
+        "statusBar.debuggingBackground": "#0066ff",
+        "tab.activeBorder": "#0066ff"
+    },
+    "trailing-spaces.highlightCurrentLine": false,
+    "editor.minimap.enabled": false
 }
