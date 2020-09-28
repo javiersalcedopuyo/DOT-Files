@@ -1,0 +1,24 @@
+# Add this to ~/.bashrc if not already present:
+#   if [ -f ~/.bash_aliases ]; then
+#       . ~/.bash_aliases
+#   fi
+
+alias please='sudo'
+
+alias g='git'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gco='git checkout'
+alias gm='git mergetool'
+alias gpl='git pull'
+alias gps='git push'
+alias gr='git reset'
+alias grb='git pull --rebase'
+alias grh='git reset --hard'
+alias grs='git reset --soft'
+alias gs='git status'
+alias gl='git log'
+
+alias ll='ls -l'

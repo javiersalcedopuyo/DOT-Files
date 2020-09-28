@@ -1,0 +1,101 @@
+{
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "editor.fontSize": 16,
+    "terminal.integrated.fontSize": 16,
+    "editor.fontFamily": "'JetBrains Mono', monospace",
+    "editor.fontLigatures": true,
+    "editor.wordWrap": "on",
+    "editor.tabCompletion": "on",
+    "editor.rulers": [
+        100
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before":  ["<C-d>"],
+            "after": ["g","b"]
+        },
+        {
+            "before":  ["<C-j>"],
+            "after": ["<C-e>"]
+        },
+        {
+            "before":  ["<C-k>"],
+            "after": ["<C-y>"]
+        },
+        {
+            "before": ["t","k"],
+            "after" : ["g","t"]
+        },
+        {
+            "before": ["t","j"],
+            "after" : ["g","T"]
+        },
+        {
+            "before": ["<Space>"],
+            "after" : ["<leader>", "<leader>", "s"]
+        },
+        {
+            "before": ["t", "b"],
+            "after":  [],
+            "commands": [
+                {
+                    "command": "bookmarks.toggle",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["]", "c"],
+            "after":  [],
+            "commands": [
+                {
+                    "command": "workbench.action.editor.nextChange",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["[", "c"],
+            "after":  [],
+            "commands": [
+                {
+                    "command": "workbench.action.editor.previousChange",
+                    "args": []
+                }
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+		{
+			"before": ["<C-d>"],
+			"after": ["g", "b"],
+        },
+        {
+            "before": ["<C-j>"],
+            "after":  ["<C-e>"],
+        },
+        {
+            "before": ["<C-k>"],
+            "after":  ["<C-y>"],
+        },
+    ],
+    "keyboard.dispatch": "keyCode",
+    "editor.lineNumbers": "relative",
+    "vim.textwidth": 100,
+    "editor.codeLens": false,
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": "#0066ff",
+    "workbench.colorCustomizations": {
+        "tab.activeBorder": "#0066ff",
+        "statusBar.background": "#5f00af",
+        "statusBar.noFolderBackground": "#5f00af",
+        "statusBar.debuggingBackground": "#5f00af",
+    },
+    "trailing-spaces.highlightCurrentLine": false,
+    "editor.minimap.enabled": false,
+    "vim.hlsearch": true,
+    "vim.easymotion": true,
+    "vim.easymotionMarkerBackgroundColor": "#ff00ff",
+    "vim.statusBarColors.easymotioninputmode": "#006600",
+    "todo-tree.tree.showScanModeButton": false
+}
