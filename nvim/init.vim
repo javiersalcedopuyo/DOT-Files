@@ -2,31 +2,34 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Base editor plugins
 Plug 'vim-airline/vim-airline'
 Plug 'ervandew/supertab'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
+Plug 'kshenoy/vim-signature'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'dominikduda/vim_current_word'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
 " Language plugins
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'CaffeineViking/vim-glsl'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/ShaderHighLight'
-" Themes
+" Theming
+Plug 'ryanoasis/vim-devicons'
+Plug 'luochen1990/rainbow'
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'morhetz/gruvbox', {'as': 'gruvbox'}
-Plug 'rakr/vim-one', {'as': 'one'}
 Plug 'NLKNguyen/papercolor-theme', {'as': 'papercolor'}
+Plug 'sainnhe/gruvbox-material'
 call plug#end()
 
 "General
-set number  "Show line numbers
+set number          "Show line numbers
 set relativenumber
-set linebreak "Break lines at word (requires Wrap lines)
-set colorcolumn=100
-set textwidth=100 "Line wrap (number of cols)
-set showmatch "Highlight matching brace
+set colorcolumn=80,100
+set showmatch       "Highlight matching brace
+set autoread        "Automatically open changes in disk
 
 "Back to normal mode from terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -45,10 +48,11 @@ nnoremap tn :tabnew<Space>
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 
-" Speedup stuff
-nnoremap <C-s> :w<CR>
-nnoremap <C-f> /
-nnoremap <Space> /
+" EasyMotion
+map  <Space> <Plug>(easymotion-bd-f)
+nmap <Space> <Plug>(easymotion-overwin-f)
+
+" FZF
 nnoremap <C-p> :Files<CR>
 
 " Highlights
@@ -66,10 +70,10 @@ let g:vim_current_word#highlight_current_word = 0
 set autoindent  "Auto-indent new lines
 set cindent "Use 'C' style program indenting
 set expandtab  "Use spaces instead of tabs
-set shiftwidth=2  " Number of auto-indent spaces
+set shiftwidth=4  " Number of auto-indent spaces
 set smartindent "Enable smart-indent
 set smarttab  "Enable smart-tabs
-set softtabstop=2 "Number of spaces per Tab
+set softtabstop=4 "Number of spaces per Tab
 
 set ruler  " Show row and column ruler information
 
@@ -85,26 +89,42 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
+" CoC: Remap keys for gotos
+nmap <silent> <C-]> <Plug>(coc-definition)
+nmap <silent> gy    <Plug>(coc-type-definition)
+nmap <silent> gi    <Plug>(coc-implementation)
+nmap <silent> gr    <Plug>(coc-references)
+
 "Jump to definition
 nmap <F12> <C-]>
+nmap gd <C-]>
+
+let g:signify_sign_change = "~"
 
 set t_Co=256
 syntax enable
 let c_space_errors=1
 
 " THEMES
-set termguicolors background=light
-"colorscheme dracula
-colorscheme papercolor
+colorscheme gruvbox-material
+let g:rainbow_active = 1
+au VimEnter,BufReadPost * :RainbowToggleOn
 " Background stays the same as the terminals
 hi Normal  guibg=NONE ctermbg=NONE
 " Parts of buffers without content are transparent
 hi NonText guibg=NONE ctermbg=NONE
 " air-line
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+
+" powerline symbols
+"let g:airline_left_sep = "\uE0BC"
+"let g:airline_left_alt_sep = "\uE0BD"
+"let g:airline_right_sep = "\uE0BE"
+"let g:airline_right_alt_sep = "\uE0BF"
 
 highlight TrailWhitespace ctermbg=red guibg=red
 match TrailWhitespace /\s\+$/
