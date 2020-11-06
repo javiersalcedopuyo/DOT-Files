@@ -4,10 +4,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'ervandew/supertab'
 Plug 'mhinz/vim-signify'
 Plug 'kshenoy/vim-signature'
+Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'dominikduda/vim_current_word'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 " Language plugins
@@ -53,7 +54,7 @@ map  <Space> <Plug>(easymotion-bd-f)
 nmap <Space> <Plug>(easymotion-overwin-f)
 
 " FZF
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :SK<CR>
 
 " Highlights
 set hlsearch  "Highlight all search results
@@ -77,27 +78,16 @@ set softtabstop=4 "Number of spaces per Tab
 
 set ruler  " Show row and column ruler information
 
-" Multicursors
-let g:multi_cursor_use_default_mapping = 0
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-d>'
-let g:multi_cursor_select_all_word_key = '<A-d>'
-let g:multi_cursor_start_key           = 'g<C-d>'
-let g:multi_cursor_select_all_key      = 'g<A-d>'
-let g:multi_cursor_next_key            = '<C-d>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
-
 " CoC: Remap keys for gotos
-nmap <silent> <C-]> <Plug>(coc-definition)
+nmap <silent> g<C-]> <Plug>(coc-definition)
 nmap <silent> gy    <Plug>(coc-type-definition)
 nmap <silent> gi    <Plug>(coc-implementation)
 nmap <silent> gr    <Plug>(coc-references)
 
 "Jump to definition
-nmap <F12> <C-]>
-nmap gd <C-]>
+nmap <F12> g<C-]>
+nmap gd g<C-]>
+nmap <C-]> g<C-]>
 
 let g:signify_sign_change = "~"
 
