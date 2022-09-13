@@ -14,15 +14,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'kshenoy/vim-signature'
 	Plug 'yggdroot/indentline'
 	" Language plugins
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Syntax highlighting and more
-	Plug 'neovim/nvim-lspconfig' " Recommended official LSP config
-	Plug 'williamboman/nvim-lsp-installer' " Install new LSPs
-	" Autocomplete
-	Plug 'hrsh7th/cmp-nvim-lsp'
-	Plug 'hrsh7th/cmp-buffer'
-	Plug 'hrsh7th/cmp-path'
-	Plug 'hrsh7th/cmp-cmdline'
-	Plug 'hrsh7th/nvim-cmp'
 	" Customization
 	Plug 'luochen1990/rainbow'
 	Plug 'ryanoasis/vim-devicons'
@@ -49,8 +42,7 @@ nmap <Leader><Leader> <Plug>(easymotion-overwin-f)
 
 " SKIM:
 nnoremap <Leader>f :Files<CR>
-let g:fzf_preview_window = 'right:60%'
-
+let g:fzf_preview_window = 'right:50%'
 
 " CURRENT WORD: Highlight occurrences of the current word
 let g:vim_current_word#highlight_twins = 1
@@ -148,126 +140,28 @@ set completeopt=menu,menuone,noselect
 
 let c_space_errors=1
 
-" TODO: Move to a .lua file
-lua << EOF
--- LSP
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-  server:setup(opts)
-end)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
--- LSP Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
---vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']e', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>e', vim.diagnostic.setloclist, opts)
+" CoC suggestions
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file.
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  --vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  --vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  --vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-end
-
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
-
--- Setup nvim-cmp.
-local cmp = require'cmp'
-
-cmp.setup({
-	mapping = cmp.mapping.preset.insert({
-      	  	['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      	  	['<C-f>'] = cmp.mapping.scroll_docs(4),
-      	  	['<C-Space>'] = cmp.mapping.complete(),
-      	  	['<C-e>'] = cmp.mapping.abort(),
-      	  	['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      	  	["<Tab>"] = cmp.mapping(function(fallback)
-			-- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
-			if cmp.visible() then
-				--local entry = cmp.get_selected_entry()
-				--if not entry then
-					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-				--else
-					--cmp.confirm()
-				--end
-			else
-				fallback()
-			end
-			end, {"i","s","c",}),
-    }),
-    sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-      	-- { name = 'vsnip' },		-- For vsnip users.
-      	-- { name = 'luasnip' },		-- For luasnip users.
-      	-- { name = 'ultisnips' },	-- For ultisnips users.
-      	-- { name = 'snippy' },		-- For snippy users.
-    }, {
-		{ name = 'buffer' },
-    })
-})
-
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
-	mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-		{ name = 'buffer' }
-    }
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-	mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-		{ name = 'path' }
-    }, {
-		{ name = 'cmdline' }
-    })
-})
-
--- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-require('lspconfig')['sourcekit'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-	capabilities = capabilities,
-}
-
-require('lspconfig')['rust_analyzer'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-	capabilities = capabilities,
-    -- Server-specific settings...
-    settings = {
-      ["rust-analyzer"] = {}
-    }
-}
-EOF
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 command FilterFlowControl g!/\(\<if\>\|\<else\>|\<for\>|\<while\>|\<do\>|\<switch\>|\<case\>|\<try\>|\<catch\>\)/d
 command TrimWhiteSpaces %s/\s\+$//e
