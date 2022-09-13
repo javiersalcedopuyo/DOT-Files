@@ -21,6 +21,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'tomasiser/vim-code-dark', {'as': 'vs_dark'}
 	Plug 'altercation/vim-colors-solarized'
+	" Misc
+	Plug 'vim-test/vim-test'
 call plug#end()
 
 let mapleader = "\<Space>"
