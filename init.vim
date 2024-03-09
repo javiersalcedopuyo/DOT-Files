@@ -16,10 +16,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" Language plugins
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Syntax highlighting and more
+	Plug 'ziglang/zig.vim'
 	" Customization
 	Plug 'luochen1990/rainbow'
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'tomasiser/vim-code-dark', {'as': 'vs_dark'}
+	Plug 'morhetz/gruvbox'
 	Plug 'altercation/vim-colors-solarized'
 	" Misc
 	Plug 'vim-test/vim-test'
@@ -29,6 +31,8 @@ let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>g g<C-]>
+nnoremap <Leader>t :TestNearest<CR>
+nnoremap <Leader>T :TestSuite<CR>
 
 " Copy to system's clipboard
 vmap <Leader>y "*y
@@ -39,8 +43,8 @@ nnoremap <C-e> :NERDTreeToggle<CR>
 " EASY MOTION:
 let g:EasyMotion_smartcase = 1
 " Move to char
-map  <Leader><Leader> <Plug>(easymotion-bd-f)
-nmap <Leader><Leader> <Plug>(easymotion-overwin-f)
+map  <Leader>j <Plug>(easymotion-bd-f)
+nmap <Leader>j <Plug>(easymotion-overwin-f)
 
 " SKIM:
 nnoremap <Leader>f :Files<CR>
@@ -56,11 +60,11 @@ nnoremap <Leader>d :SignifyHunkDiff<CR>
 nnoremap <Leader>u :SignifyHunkUndo<CR>
 
 "AIRLINE:
-let g:airline#extensions#tabline#enabled = 0
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+"let g:airline#extensions#tabline#enabled = 0
+"let g:airline_powerline_fonts = 1
+"if !exists('g:airline_symbols')
+"  let g:airline_symbols = {}
+"endif
 " Rounded separators MODE)...(%
 "let g:airline_left_sep = "\uE0B4"
 "let g:airline_right_sep = "\uE0B6"
@@ -100,7 +104,7 @@ tnoremap <Esc> <C-\><C-n>
 set t_Co=256   " This is may or may not needed.
 syntax enable
 set background=dark
-colorscheme codedark
+colorscheme gruvbox
 highlight ColorColumn ctermbg=lightgray
 highlight TrailWhitespace ctermbg=red guibg=red
 highlight Normal ctermbg=none
@@ -142,12 +146,24 @@ set completeopt=menu,menuone,noselect
 
 let c_space_errors=1
 
+let g:zig_fmt_autosave=0 " Don't format on save
+
 " CoC:
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nnoremap <Leader>r <Plug>(coc-references)
+" Use K to show documentation in preview window.
+nnoremap <Leader>h :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
 
 " Suggestions
 inoremap <expr><Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"

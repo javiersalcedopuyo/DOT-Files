@@ -18,7 +18,7 @@ vim.keymap.set('n', 'tj', 'gT')
 vim.keymap.set('n', '<C-j>', '<C-e>')
 vim.keymap.set('n', '<C-k>', '<C-y>')
 
-vim.o.colorcolumn = 80
+vim.o.colorcolumn = "80,100"
 -- Highlight matching brace
 vim.o.showmatch = true
 -- Highlight the current line
@@ -34,12 +34,16 @@ vim.o.copyindent = true
 vim.o.preserveindent = true
 
 -- Back to normal mode from terminal mode
---vim.keymap.set('t', '<Esc>', '<C-\><C-n>')
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
 -- MORE PLUGINS
 return{
-	-- Bracket color matching
-	'luochen1990/rainbow',
+	{-- Bracket color matching
+		'luochen1990/rainbow',
+		config = function()
+			vim.g.rainbow_active = 1
+		end
+	},
 	-- Highlight instances of the word under cursor
 	'dominikduda/vim_current_word',
 
@@ -71,5 +75,11 @@ return{
 		end
 	},
 
-	--'mg979/vim-visual-multi', {'branch': 'master'},
+	'mg979/vim-visual-multi',
+
+	-- Show the current context on the top
+	'nvim-treesitter/nvim-treesitter-context',
+
+	-- Smooth scrolling
+	'karb94/neoscroll.nvim'
 }
