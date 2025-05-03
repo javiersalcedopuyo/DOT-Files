@@ -1,0 +1,28 @@
+[user]
+	email = javiersalcedo.p@gmail.com
+	name = Javier Salcedo
+[core]
+	editor = nvim
+	excludesfile = /Users/javiersalcedo/.config/global_gitignore
+[alias]
+	st	= status
+	cm	= commit -m
+	ca	= commit --amend
+	ps	= push
+	pl	= pull
+	df	= diff
+	rb	= rebase
+	rbi	= rebase -i
+	co	= checkout
+	sw	= switch
+	br	= branch
+	brl	= branch -list
+	bl	= blame
+	pop	= stash pop
+	rs	= reset
+	rt	= restore
+	rts	= restore --staged
+	sl	= stash --list
+	bs	= bisect
+	cp	= cherry-pick
+	lg = log --format='%C(red)%ad %C(green)%h %C(blue)(%an): %Creset%s%C(Yellow)%d' --date=format:'%d-%m-%y'
