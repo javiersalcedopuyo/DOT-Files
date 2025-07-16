@@ -4,6 +4,12 @@
 [core]
 	editor = nvim
 	excludesfile = /Users/javiersalcedo/.config/global_gitignore
+	pager = delta
+[interactive]
+	diffFilter = delta = --color-only
+[delta]
+	navigate = true
+	line-numbers = true
 [alias]
 	st	= status
 	cm	= commit -m
@@ -16,7 +22,7 @@
 	co	= checkout
 	sw	= switch
 	br	= branch
-	brl	= branch -list
+	brl	= branch --list
 	bl	= blame
 	pop	= stash pop
 	rs	= reset
