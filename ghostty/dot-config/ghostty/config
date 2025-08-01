@@ -5,3 +5,5 @@ theme = gruvbox-material
 #theme = catppuccin-frappe
 #theme = Adwaita
 macos-icon = xray
+background-opacity = 0.9
+background-blur = true
