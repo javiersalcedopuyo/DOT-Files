@@ -1,7 +1,8 @@
 command = /usr/local/bin/fish
 font-family = "JetBrainsMono NF"
 font-size = 14
-theme = gruvbox-material
+theme = Monokai Classic
+#theme = Gruvbox Material
 #theme = catppuccin-frappe
 #theme = Adwaita
 macos-icon = xray
