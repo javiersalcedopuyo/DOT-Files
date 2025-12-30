@@ -206,11 +206,11 @@
     vim.keymap.set( 'n', 'tk', 'gt' )
     vim.keymap.set( 'n', 'tj', 'gT' )
 
-    vim.keymap.set( 'n', 'fo', 'zo', { desc = '[O]pen the [F]old under cursor' })
-    vim.keymap.set( 'n', 'fO', 'zR', { desc = '[O]pen all [F]olds' })
-    vim.keymap.set( 'n', 'fc', 'zc', { desc = '[C]lose the [F]old under cursor' })
-    vim.keymap.set( 'n', 'fC', 'zM', { desc = '[C]lose all [F]olds' })
-    vim.keymap.set( 'n', 'ft', 'za', { desc = '[T]oggle the [F]old under cursor' })
+    -- vim.keymap.set( 'n', 'fo', 'zo', { desc = '[O]pen the [F]old under cursor' })
+    -- vim.keymap.set( 'n', 'fO', 'zR', { desc = '[O]pen all [F]olds' })
+    -- vim.keymap.set( 'n', 'fc', 'zc', { desc = '[C]lose the [F]old under cursor' })
+    -- vim.keymap.set( 'n', 'fC', 'zM', { desc = '[C]lose all [F]olds' })
+    -- vim.keymap.set( 'n', 'ft', 'za', { desc = '[T]oggle the [F]old under cursor' })
 
     -- Go to definition
     vim.keymap.set( 'n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { desc = '[G]o to [D]efinition' })
