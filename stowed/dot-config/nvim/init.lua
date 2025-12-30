@@ -233,6 +233,16 @@
         end,
         {desc = '[O]pen [T]erminal'})
 
+    -- Open a terminal in a new tab
+    vim.keymap.set(
+        'n',
+        'tt',
+        function()
+            vim.cmd.tabnew()
+            vim.cmd.term()
+        end,
+        {desc = "[T]erminal in new [T]ab"})
+
 
 -- LSP ---------------------------------------------------------------------------------------------
     vim.diagnostic.config(
