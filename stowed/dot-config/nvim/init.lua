@@ -245,6 +245,18 @@
 
 
 -- LSP ---------------------------------------------------------------------------------------------
+    vim.filetype.add
+    ({
+        extension =
+        {
+            slang = 'slang',
+            glsl  = 'glsl',
+            vert  = 'glsl',
+            frag  = 'glsl',
+            comp  = 'glsl',
+        }
+    })
+
     vim.diagnostic.config(
     {
         virtual_lines =
@@ -277,8 +289,8 @@
     vim.lsp.config[ 'slangd' ] =
     {
         cmd = { 'slangd' },
-        filetypes = { 'vert', 'frag', 'comp', 'shader', 'slang' },
-        root_markers = { '.git', '.svn', 'build.cpp' },
+        filetypes = { 'slang', 'glsl' },
+        root_markers = { 'compile_commands.json', '.git', '.svn', 'build.cpp' },
         settings = {}
     }
 
