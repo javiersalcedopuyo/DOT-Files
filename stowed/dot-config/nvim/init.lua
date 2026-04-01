@@ -121,37 +121,17 @@
         end,
         {})
 
-    -- Stop LSP
-    local stop_lsp = function()
-        local clients = vim.lsp.get_clients({ bufnr = 0 })  -- 0 = current buffer
-        vim.lsp.stop_client( clients )
-    end
-    vim.api.nvim_create_user_command( "LSPStop", stop_lsp, {} )
-
-        --
     -- Restart LSP
     vim.api.nvim_create_user_command(
         "LSPRestart",
         function ()
-            stop_lsp()
+            vim.cmd( 'lsp stop' )
             vim.cmd.edit()
         end,
         {})
 
     -- Print the currently attached LSPs
-    vim.api.nvim_create_user_command(
-        "LSPInfo",
-        function()
-            local clients = vim.lsp.get_clients({ bufnr = 0 })  -- 0 = current buffer
-            if #clients == 0 then
-                print("No LSP attached")
-            else
-                for _, client in ipairs(clients) do
-                    print("Attached LSPs:", client.name)
-                end
-            end
-        end,
-        {} )
+    vim.api.nvim_create_user_command( "LspInfo", function() vim.cmd( 'checkhealth vim.lsp' ) end, {} )
 
 
 -- GENERAL FUNCTIONALITY --------------------------------------------------------------------------
@@ -245,18 +225,6 @@
 
 
 -- LSP ---------------------------------------------------------------------------------------------
-    vim.filetype.add
-    ({
-        extension =
-        {
-            slang = 'slang',
-            glsl  = 'glsl',
-            vert  = 'glsl',
-            frag  = 'glsl',
-            comp  = 'glsl',
-        }
-    })
-
     vim.diagnostic.config(
     {
         virtual_lines =
@@ -265,34 +233,6 @@
         }
         -- Use the default config for everything else
     })
-    vim.lsp.config[ 'lua_ls' ] = 
-    {
-        cmd = { 'lua-language-server' },
-        filetypes = { 'lua' },
-        root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git', '.svn' },
-        settings =
-        {
-            Lua =
-            {
-                runtime     = { version = 'LuaJIT' },
-                diagnostics = { globals = 'vim'    }, -- FIXME: It still doesn't recognise the `vim` global
-            },
-        }
-    }
-    vim.lsp.config[ 'clangd' ] =
-    {
-        cmd = { 'clangd' },
-        filetypes = { 'c', 'h', 'cpp', 'hpp', 'cc', 'cxx' },
-        root_markers = { '.clangd', 'compile_commands.json', '.git', '.svn', 'build.cpp' },
-        settings = {}
-    }
-    vim.lsp.config[ 'slangd' ] =
-    {
-        cmd = { 'slangd' },
-        filetypes = { 'slang', 'glsl' },
-        root_markers = { 'compile_commands.json', '.git', '.svn', 'build.cpp' },
-        settings = {}
-    }
 
     vim.lsp.enable( 'lua_ls' )
     vim.lsp.enable( 'clangd' )
@@ -322,6 +262,7 @@
         {
             'dominikduda/vim_current_word', -- Highlights instances of the word under cursor
             'mg979/vim-visual-multi',       -- Multiple cursors using <C-n>
+            'neovim/nvim-lspconfig',
             -- Version control stuff
             {
                 'mhinz/vim-signify',
