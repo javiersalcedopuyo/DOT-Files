@@ -253,6 +253,7 @@
         'https://github.com/mg979/vim-visual-multi',        -- Multiple cursors using <C-n>
         'https://github.com/echasnovski/mini.nvim',         -- Collection of various small independent plugins/modules
         'https://github.com/folke/which-key.nvim',          -- Useful plugin to show you pending keybinds
+        'https://github.com/wellle/context.vim'             -- Sticky scrolling
     })
 
     -- Easymotion
