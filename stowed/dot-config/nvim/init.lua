@@ -1,3 +1,5 @@
+vim.loader.enable() -- EXPERIMENTAL
+
 -- APPEARANCE -------------------------------------------------------------------------------------
     -- TODO: Move this to its own lua file and make it its own theme
     vim.cmd( "colorscheme unokai" )
