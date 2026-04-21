@@ -147,6 +147,13 @@ vim.loader.enable() -- EXPERIMENTAL
             vim.o.clipboard = 'unnamedplus'
         end )
 
+    -- Use git-bash on Windows and fish elsewhere (if available)
+    if vim.loop.os_uname().version:match("Windows") then
+        vim.o.shell = '"C:/Program Files/Git/bin/bash.exe"'
+    elseif vim.fn.executable( "fish" ) then
+        vim.o.shell = "fish"
+    end
+
 
 -- KEY MAPPINGS ------------------------------------------------------------------------------------
     -- Make Space the leader key
