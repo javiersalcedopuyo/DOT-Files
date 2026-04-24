@@ -154,6 +154,8 @@ vim.loader.enable() -- EXPERIMENTAL
         vim.o.shell = "fish"
     end
 
+    vim.g.markdown_folding = true
+
 
 -- KEY MAPPINGS ------------------------------------------------------------------------------------
     -- Make Space the leader key
