@@ -71,8 +71,8 @@ vim.loader.enable() -- EXPERIMENTAL
             desc = 'Hide the line numbers in terminal mode.',
             group = vim.api.nvim_create_augroup( 'custom_term_open', { clear = true } ),
             callback = function ()
-                vim.opt.number         = false
-                vim.opt.relativenumber = false
+                vim.opt_local.number         = false
+                vim.opt_local.relativenumber = false
             end
         } )
 
