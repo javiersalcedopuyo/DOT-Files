@@ -183,18 +183,6 @@ vim.loader.enable() -- EXPERIMENTAL
     -- Shortcut to config
     vim.keymap.set( 'n', '<Leader>oc', ':e $MYVIMRC<CR>', { desc = '[O]pen the [C]onfig file' })
 
-    -- Open a terminal in a bottom split
-    vim.keymap.set(
-        'n',
-        '<Leader>ot',
-        function()
-            vim.cmd.new()
-            vim.cmd.term()
-            vim.cmd.wincmd("J") -- Move the new split to the bottom
-            vim.api.nvim_win_set_height(0, 15)
-        end,
-        {desc = '[O]pen [T]erminal'})
-
     -- Open a terminal in a new tab
     vim.keymap.set(
         'n',
@@ -204,6 +192,63 @@ vim.loader.enable() -- EXPERIMENTAL
             vim.cmd.term()
         end,
         {desc = "[T]erminal in new [T]ab"})
+
+    -- Open a terminal in a new tab
+    vim.keymap.set(
+        'n',
+        '<Leader>tt',
+        function()
+            vim.cmd.tabnew()
+            vim.cmd.term()
+        end,
+        {desc = "[T]erminal in new [T]ab"})
+
+    -- Open a terminal in a bottom split
+    vim.keymap.set(
+        'n',
+        '<Leader>tj',
+        function()
+            vim.cmd.new()
+            vim.cmd.term()
+            vim.cmd.wincmd("J") -- Move the new split to the bottom
+            vim.api.nvim_win_set_height(0, 15)
+        end,
+        {desc = 'Open a [T]erminal bellow'})
+
+    -- Open a terminal in a split to the left
+    vim.keymap.set(
+        'n',
+        '<Leader>th',
+        function()
+            vim.cmd.new()
+            vim.cmd.term()
+            vim.cmd.wincmd("H") -- Move the new split to the bottom
+        end,
+        {desc = "Open [T]erminal to the left"})
+
+    -- Open a terminal in a split to the right
+    vim.keymap.set(
+        'n',
+        '<Leader>tl',
+        function()
+            vim.cmd.new()
+            vim.cmd.term()
+            vim.cmd.wincmd("L") -- Move the new split to the bottom
+        end,
+        {desc = "Open [T]erminal to the right"})
+
+
+    -- Open a terminal in a top split
+    vim.keymap.set(
+        'n',
+        '<Leader>tk',
+        function()
+            vim.cmd.new()
+            vim.cmd.term()
+            vim.cmd.wincmd("K") -- Move the new split to the bottom
+            vim.api.nvim_win_set_height(0, 15)
+        end,
+        {desc = 'Open a [T]erminal above'})
 
 
 -- LSP ---------------------------------------------------------------------------------------------
