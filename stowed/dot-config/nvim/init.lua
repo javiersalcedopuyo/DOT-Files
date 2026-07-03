@@ -64,7 +64,7 @@ vim.loader.enable() -- EXPERIMENTAL
 
 
 -- AUTOCOMMANDS ------------------------------------------------------------------------------------
-    -- Don't display the line numbers in terminal mode
+    -- Don't display the line numbers nor spell checking in terminal mode
     vim.api.nvim_create_autocmd(
         'TermOpen',
         {
@@ -73,6 +73,7 @@ vim.loader.enable() -- EXPERIMENTAL
             callback = function ()
                 vim.opt_local.number         = false
                 vim.opt_local.relativenumber = false
+                vim.opt_local.spell          = false
             end
         } )
 
@@ -139,6 +140,10 @@ vim.loader.enable() -- EXPERIMENTAL
     vim.o.shiftwidth    = 4     -- Number of autoindent spaces
     vim.o.softtabstop   = 4     -- Number of spaces replacing a Tab
     vim.o.ts            = 4     -- Number of spaces a Tab is *displayed* as
+
+    -- Spell checking
+    vim.opt.spell = true
+    vim.opt.spelllang = { "en_gb" }
 
     -- Sync clipboard between OS and Neovim.
     --  Schedule the setting after `UiEnter` because it can increase startup-time.
