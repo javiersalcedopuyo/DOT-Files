@@ -262,8 +262,11 @@ vim.loader.enable() -- EXPERIMENTAL
     {
         'lua_ls',
         'clangd',
-        'slangd'
+        'slangd',
+        'ctags_lsp'
     })
+
+    vim.lsp.config.clangd.cmd = { 'clangd', '--header-insertion=never' }
 
     -- Set up the LSP when opening a file associated with it
     vim.api.nvim_create_autocmd(
