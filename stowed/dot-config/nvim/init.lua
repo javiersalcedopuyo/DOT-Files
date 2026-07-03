@@ -315,11 +315,12 @@ vim.loader.enable() -- EXPERIMENTAL
         {})
 
     vim.pack.add({
-        'https://github.com/dominikduda/vim_current_word',  -- Highlights instances of the word under cursor
-        'https://github.com/mg979/vim-visual-multi',        -- Multiple cursors using <C-n>
-        'https://github.com/echasnovski/mini.nvim',         -- Collection of various small independent plugins/modules
-        'https://github.com/folke/which-key.nvim',          -- Useful plugin to show you pending keybinds
-        'https://github.com/wellle/context.vim'             -- Sticky scrolling
+        'https://github.com/dominikduda/vim_current_word',              -- Highlights instances of the word under cursor
+        'https://github.com/mg979/vim-visual-multi',                    -- Multiple cursors using <C-n>
+        'https://github.com/echasnovski/mini.nvim',                     -- Collection of various small independent plugins/modules
+        'https://github.com/folke/which-key.nvim',                      -- Useful plugin to show you pending keybinds
+        'https://github.com/wellle/context.vim',                        -- Sticky scrolling
+        'https://github.com/MeanderingProgrammer/render-markdown.nvim'  -- Inline Markdown rendering
     })
 
     -- Easymotion
@@ -332,6 +333,10 @@ vim.loader.enable() -- EXPERIMENTAL
     vim.g.signify_sign_change = '~'
     vim.keymap.set('n', '<Leader>vd', ':SignifyHunkDiff<CR>', {desc = '[V]ersion Control [D]iff'})
     vim.keymap.set('n', '<Leader>vu', ':SignifyHunkUndo<CR>', {desc = '[V]ersion Control [U]ndo'})
+
+    -- File explorer
+    vim.pack.add({ 'https://github.com/stevearc/oil.nvim' })
+    require( 'oil' ).setup()
 
     -- Simple statusline.
     require( 'mini.statusline' ).setup({ use_icons = vim.g.have_nerd_font })
@@ -361,6 +366,9 @@ vim.loader.enable() -- EXPERIMENTAL
             suffix_next = 'n',      -- Suffix to search with "next" method
         }
     })
+
+    -- Icons
+    require( 'mini.icons' )
 
     -- Fuzzy Finder (files, lsp, etc)
     vim.pack.add({
