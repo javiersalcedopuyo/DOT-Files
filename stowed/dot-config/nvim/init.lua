@@ -185,6 +185,8 @@ vim.loader.enable() -- EXPERIMENTAL
     vim.keymap.set( 'n', 'tk', 'gt' )
     vim.keymap.set( 'n', 'tj', 'gT' )
 
+    vim.keymap.set( 'n', '<Leader>ls', ':ls<CR>:b ', { desc = '[L]i[s]t open buffers and select one' } )
+
     -- Shortcut to config
     vim.keymap.set( 'n', '<Leader>oc', ':e $MYVIMRC<CR>', { desc = '[O]pen the [C]onfig file' })
 
